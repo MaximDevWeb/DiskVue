@@ -7,6 +7,7 @@ import logo from "@/assets/images/logo.svg";
 import NavbarBanner from "@/components/NavbarBanner.vue";
 import NavbarMenu from "@/components/NavbarMenu.vue";
 import HeaderSearch from "@/components/HeaderSearch.vue";
+import HeaderButtons from "@/components/HeaderButtons.vue";
 
 const authStore = useAuthStore();
 
@@ -32,25 +33,13 @@ onMounted(() => {
     <div class="content">
       <header class="header">
         <a href="#" class="header__logo">
-          <img src="/images/logo.svg" alt="Yandex Disk" />
+          <img :src="logo" alt="Yandex Disk" />
         </a>
 
         <header-search />
 
         <aside class="user">
-          <a href="#" class="btn btn_default">
-            <svg class="icon">
-              <use xlink:href="#upload"></use>
-            </svg>
-            <span>Upload</span>
-          </a>
-
-          <a href="#" class="btn btn_black">
-            <svg class="icon">
-              <use xlink:href="#add_folder"></use>
-            </svg>
-            <span>Create</span>
-          </a>
+          <header-buttons />
 
           <header-profile />
         </aside>

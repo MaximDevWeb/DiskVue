@@ -22,6 +22,6 @@ describe("components.HeaderSearch", () => {
     expect(appStore.search).toBe("");
 
     input.setValue("Hello");
-    expect(appStore.search).toBe("Helo");
+    expect(appStore.search).toBe("Hello");
   });
 });
