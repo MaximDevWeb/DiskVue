@@ -1,5 +1,9 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import ContentBreadcrumbs from "@/components/ContentBreadcrumbs.vue";
+</script>
 
 <template>
-  <h1>shared</h1>
+  <main class="main">
+    <content-breadcrumbs />
+  </main>
 </template>

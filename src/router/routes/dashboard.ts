@@ -18,15 +18,7 @@ const site: Array<RouteRecordRaw> = [
 
     children: [
       {
-        path: "",
-        name: "Files",
-        component: Files,
-        meta: {
-          title: "All files",
-        },
-      },
-      {
-        path: "photos",
+        path: "photos/:sub*",
         name: "Photos",
         component: Photos,
         meta: {
@@ -34,7 +26,7 @@ const site: Array<RouteRecordRaw> = [
         },
       },
       {
-        path: "albums",
+        path: "albums/:sub*",
         name: "Albums",
         component: Albums,
         meta: {
@@ -63,6 +55,14 @@ const site: Array<RouteRecordRaw> = [
         component: Trash,
         meta: {
           title: "Trash",
+        },
+      },
+      {
+        path: ":sub*",
+        name: "Files",
+        component: Files,
+        meta: {
+          title: "Files",
         },
       },
     ],

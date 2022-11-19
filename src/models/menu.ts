@@ -1,4 +1,4 @@
-import type { MenuItem } from "@/types/main";
+import type { MenuItem } from "@/types/app";
 
 const menuList: Array<MenuItem> = [
   {
