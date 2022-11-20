@@ -40,7 +40,7 @@ const breadcrumbs = computed(() => {
   subPath.forEach((item) => {
     parentPath += "/" + item;
     items.push({
-      name: _.upperFirst(item),
+      name: _.capitalize(_.startCase(item)),
       link: parentPath != route.fullPath ? parentPath : "",
     });
   });
