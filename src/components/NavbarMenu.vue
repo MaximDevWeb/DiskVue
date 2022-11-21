@@ -7,9 +7,6 @@ import menuList from "@/models/menu";
 /**
  * This is the navbar menu component.
  */
-
-const route = useRoute();
-const routeName = computed(() => route.name);
 </script>
 
 <template>
@@ -19,7 +16,6 @@ const routeName = computed(() => route.name);
         v-for="item in menuList"
         :to="{ name: item.name }"
         class="navbar__item"
-        :class="{ navbar__item_active: item.name === routeName }"
       >
         <icon :type="item.icon" />
         {{ item.name }}
