@@ -57,6 +57,11 @@ const alphabetUp: Array<string> = [
   "Z",
 ];
 
+/**
+ * Generate Random string
+ *
+ * @param length
+ */
 export const randString = (length: number = 10): string => {
   const resultArr = [];
   let counter = 0;

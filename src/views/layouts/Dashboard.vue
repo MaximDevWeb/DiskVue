@@ -17,7 +17,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div class="container_content">
+  <div class="container_content" v-if="authStore.user">
     <nav class="navbar">
       <div>
         <div class="navbar__logo">

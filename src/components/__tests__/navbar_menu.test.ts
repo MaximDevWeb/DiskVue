@@ -23,7 +23,7 @@ describe("components.NavbarMenu", () => {
 
   test("active link", async () => {
     await router.push({ name: "Photos" });
-    const activeLink = wrapper.find(".navbar__item_active");
+    const activeLink = wrapper.find(".router-link-active");
 
     expect(activeLink.attributes("href")).toBe("/dashboard/photos");
   });
