@@ -1,8 +1,9 @@
 import { describe, expect, test, vi } from "vitest";
 import { mount } from "@vue/test-utils";
 import ContentFolder from "@/components/ContentFolder.vue";
-import type { Folder } from "@/types/app";
 import { createRouter, createWebHistory } from "vue-router";
+import { createTestingPinia } from "@pinia/testing";
+import type { Folder } from "../../types/stores";
 
 describe("components.ContentFolder", async () => {
   const router = createRouter({
@@ -31,7 +32,12 @@ describe("components.ContentFolder", async () => {
       item: item,
     },
     global: {
-      plugins: [router],
+      plugins: [
+        router,
+        createTestingPinia({
+          createSpy: vi.fn,
+        }),
+      ],
     },
   });
 

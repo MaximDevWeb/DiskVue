@@ -8,6 +8,7 @@ import NavbarBanner from "@/components/NavbarBanner.vue";
 import NavbarMenu from "@/components/NavbarMenu.vue";
 import HeaderSearch from "@/components/HeaderSearch.vue";
 import HeaderButtons from "@/components/HeaderButtons.vue";
+import ModalFolder from "@/components/ModalFolder.vue";
 
 const authStore = useAuthStore();
 
@@ -177,37 +178,7 @@ onMounted(() => {
       </div>
     </div>
 
-    <aside class="modal">
-      <div class="modal__content">
-        <div class="modal__header">
-          <h2>Rename file</h2>
-
-          <a href="#" class="modal__close">
-            <svg class="icon">
-              <use xlink:href="#close"></use>
-            </svg>
-          </a>
-        </div>
-
-        <div class="modal__body">
-          <div class="input__block">
-            <div class="input__error">login not found</div>
-            <input type="text" class="input" placeholder="File name" />
-          </div>
-          <div class="input__block">
-            <div class="input__error">login not found</div>
-            <input type="text" class="input" placeholder="File name" />
-          </div>
-        </div>
-
-        <div class="modal__footer">
-          <a href="#" class="btn">Отмена</a>
-          <a href="#" class="btn btn_default">Сохранить</a>
-        </div>
-      </div>
-      <div class="modal__bg"></div>
-    </aside>
-
+    <modal-folder />
     <toasts />
   </div>
 </template>

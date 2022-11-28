@@ -21,6 +21,6 @@ describe("components.ContentBreadcrumbs", () => {
     await router.push("/dashboard/photos/cities/moscow");
 
     const items = wrapper.findAll("li");
-    expect(_.last(items)?.text()).toBe("Moscow");
+    expect(_.last(items)?.text()).toBe("MOSCOW");
   });
 });

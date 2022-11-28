@@ -4,13 +4,14 @@ import Icon from "@/components/icon/Icon.vue";
 import { useRoute } from "vue-router";
 import { ref } from "vue";
 import { numToSize } from "@/helpers/numbers";
-import type { Folder } from "@/types/app";
+import { useFoldersStore } from "@/stores/folders";
+import type { Folder } from "@/types/stores";
 
 /**
  * Content Folder component
  */
 
-defineProps<{
+const props = defineProps<{
   /**
    * The item for the folder.
    */
@@ -18,6 +19,7 @@ defineProps<{
 }>();
 
 const route = useRoute();
+const folderStore = useFoldersStore();
 const visible = ref(false);
 
 /**
@@ -32,6 +34,23 @@ const changeVisibleContext = () => {
  */
 const focusOutContext = () => {
   visible.value = false;
+};
+
+/**
+ * Function set editable folder
+ */
+const setEditFolder = () => {
+  folderStore.data.name = props.item.name;
+  folderStore.data.id = props.item.id;
+
+  folderStore.modalFolderVisible = true;
+};
+
+/**
+ * Function delete folder
+ */
+const deleteFolder = () => {
+  folderStore.delete(props.item.id);
 };
 </script>
 
@@ -57,8 +76,8 @@ const focusOutContext = () => {
         <icon type="menu_dotes" />
 
         <div class="context" :class="{ context_active: visible }">
-          <div class="context__item">Delete</div>
-          <div class="context__item">Rename</div>
+          <div class="context__item" @click.prevent="deleteFolderq">Delete</div>
+          <div class="context__item" @click.prevent="setEditFolder">Rename</div>
         </div>
       </div>
     </div>

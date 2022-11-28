@@ -3,7 +3,7 @@ import { mount } from "@vue/test-utils";
 import { createTestingPinia } from "@pinia/testing";
 import HeaderButtons from "@/components/HeaderButtons.vue";
 import UploadButton from "@/components/UploadButton.vue";
-import { useAppStore } from "../../stores/app";
+import { useFoldersStore } from "../../stores/folders";
 
 describe("components.HeaderSearch", () => {
   const wrapper = mount(HeaderButtons, {
@@ -16,14 +16,14 @@ describe("components.HeaderSearch", () => {
     },
   });
 
-  const appStore = useAppStore();
+  const folderStore = useFoldersStore();
 
   test("change visible state modal create folder", async () => {
     const button = wrapper.find("a.btn_black");
-    expect(appStore.modalFolderVisible).toBe(false);
+    expect(folderStore.modalFolderVisible).toBe(false);
 
     await button.trigger("click");
-    expect(appStore.modalFolderVisible).toBe(true);
+    expect(folderStore.modalFolderVisible).toBe(true);
   });
 
   test("the presence of the file upload button component", () => {

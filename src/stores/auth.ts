@@ -25,7 +25,7 @@ export const useAuthStore = defineStore("auth", {
     user: null as any,
     token: localStorage.getItem("token") as string,
     errors: {} as ErrorsData,
-    target: "/dashboard",
+    target: "/dashboard/files",
     load: false,
   }),
 

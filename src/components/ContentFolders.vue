@@ -2,23 +2,19 @@
 import ContentFolder from "@/components/ContentFolder.vue";
 import { useFoldersStore } from "@/stores/folders";
 import { watchEffect } from "vue";
-import { useRoute } from "vue-router";
-import _ from "lodash";
 import ContentSkeleton from "@/components/ContentSkeleton.vue";
 
 /**
  * Content Folders component
  */
 
-const route = useRoute();
 const foldersStore = useFoldersStore();
 
 /**
  * We monitor the url change and upload the updated data
  */
 watchEffect(() => {
-  const slug = _.last(route.params.sub);
-  foldersStore.get(slug ?? "");
+  foldersStore.get();
 });
 </script>
 
