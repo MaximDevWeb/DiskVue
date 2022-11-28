@@ -76,7 +76,7 @@ const deleteFolder = () => {
         <icon type="menu_dotes" />
 
         <div class="context" :class="{ context_active: visible }">
-          <div class="context__item" @click.prevent="deleteFolderq">Delete</div>
+          <div class="context__item" @click.prevent="deleteFolder">Delete</div>
           <div class="context__item" @click.prevent="setEditFolder">Rename</div>
         </div>
       </div>
