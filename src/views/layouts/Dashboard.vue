@@ -9,6 +9,7 @@ import NavbarMenu from "@/components/NavbarMenu.vue";
 import HeaderSearch from "@/components/HeaderSearch.vue";
 import HeaderButtons from "@/components/HeaderButtons.vue";
 import ModalFolder from "@/components/ModalFolder.vue";
+import AppConfirm from "@/components/AppConfirm.vue";
 
 const authStore = useAuthStore();
 
@@ -179,6 +180,7 @@ onMounted(() => {
     </div>
 
     <modal-folder />
+    <app-confirm />
     <toasts />
   </div>
 </template>

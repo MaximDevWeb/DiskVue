@@ -6,6 +6,7 @@ import { ref } from "vue";
 import { numToSize } from "@/helpers/numbers";
 import { useFoldersStore } from "@/stores/folders";
 import type { Folder } from "@/types/stores";
+import { useAppStore } from "@/stores/app";
 
 /**
  * Content Folder component
@@ -20,6 +21,7 @@ const props = defineProps<{
 
 const route = useRoute();
 const folderStore = useFoldersStore();
+const appStore = useAppStore();
 const visible = ref(false);
 
 /**
@@ -50,7 +52,11 @@ const setEditFolder = () => {
  * Function delete folder
  */
 const deleteFolder = () => {
-  folderStore.delete(props.item.id);
+  appStore.setConfirm(
+    "Confirm deleting the folder!",
+    folderStore.delete,
+    props.item.id
+  );
 };
 </script>
 
