@@ -1,18 +1,18 @@
 <script setup lang="ts">
 import Icon from "@/components/icon/Icon.vue";
-import { useAppStore } from "@/stores/app";
 import UploadButton from "@/components/UploadButton.vue";
+import { useFoldersStore } from "@/stores/folders";
 
 /**
  * Header Buttons component
  */
-const appStore = useAppStore();
+const folderStore = useFoldersStore();
 
 /**
  * Handling the modal window opening event
  */
 const openModal = () => {
-  appStore.modalFolderVisible = true;
+  folderStore.modalFolderVisible = true;
 };
 </script>
 
