@@ -5,6 +5,11 @@
   overflow: auto;
   display: none;
 
+  .router-link-active {
+    color: black;
+    background-color: variable.$main;
+  }
+
   @media (max-width: 1300px) {
     display: flex;
   }
@@ -23,9 +28,4 @@
     margin-right: variable.$margin-xxs;
     color: black;
   }
-}
-
-.mobile-menu_active {
-  color: black;
-  background-color: variable.$main;
 }

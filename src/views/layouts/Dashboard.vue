@@ -10,6 +10,7 @@ import HeaderSearch from "@/components/HeaderSearch.vue";
 import HeaderButtons from "@/components/HeaderButtons.vue";
 import ModalFolder from "@/components/ModalFolder.vue";
 import AppConfirm from "@/components/AppConfirm.vue";
+import NavbarMobileMenu from "@/components/NavbarMobileMenu.vue";
 
 const authStore = useAuthStore();
 
@@ -47,63 +48,7 @@ onMounted(() => {
         </aside>
       </header>
 
-      <nav class="mobile-menu">
-        <ul class="mobile-menu__list">
-          <li>
-            <a href="#" class="mobile-menu__item mobile-menu_active">
-              <svg class="icon">
-                <use xlink:href="#files"></use>
-              </svg>
-              Files
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="mobile-menu__item">
-              <svg class="icon">
-                <use xlink:href="#photo"></use>
-              </svg>
-              Photos
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="mobile-menu__item">
-              <svg class="icon">
-                <use xlink:href="#album"></use>
-              </svg>
-              Albums
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="mobile-menu__item">
-              <svg class="icon">
-                <use xlink:href="#shared"></use>
-              </svg>
-              Shared access
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="mobile-menu__item">
-              <svg class="icon">
-                <use xlink:href="#archive"></use>
-              </svg>
-              Archives
-            </a>
-          </li>
-
-          <li>
-            <a href="#" class="mobile-menu__item">
-              <svg class="icon">
-                <use xlink:href="#delete"></use>
-              </svg>
-              Trash
-            </a>
-          </li>
-        </ul>
-      </nav>
+      <navbar-mobile-menu />
 
       <div class="content__wrapper">
         <router-view />
