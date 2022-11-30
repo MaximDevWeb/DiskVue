@@ -5,7 +5,7 @@ import { RouterLink } from "vue-router";
 import router from "../../router";
 import { createTestingPinia } from "@pinia/testing";
 
-describe("components.NavbarMenu", () => {
+describe("components.NavbarMobileMenu", () => {
   const wrapper = mount(NavbarMobileMenu, {
     global: {
       plugins: [
