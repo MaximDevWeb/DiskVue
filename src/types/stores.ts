@@ -22,3 +22,8 @@ export type FolderState = {
     name?: Array<string>;
   };
 };
+
+export type UploadData = {
+  file: File;
+  folder: string;
+};

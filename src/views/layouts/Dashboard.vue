@@ -11,6 +11,7 @@ import HeaderButtons from "@/components/HeaderButtons.vue";
 import ModalFolder from "@/components/ModalFolder.vue";
 import AppConfirm from "@/components/AppConfirm.vue";
 import NavbarMobileMenu from "@/components/NavbarMobileMenu.vue";
+import UploadLoader from "@/components/UploadLoader.vue";
 
 const authStore = useAuthStore();
 
@@ -124,6 +125,7 @@ onMounted(() => {
       </div>
     </div>
 
+    <upload-loader />
     <modal-folder />
     <app-confirm />
     <toasts />
