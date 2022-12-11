@@ -14,3 +14,14 @@ export type Confirm = {
   callbackArgs: any;
   visible: boolean;
 };
+
+export type InputSwitchItem = {
+  value: string;
+  icon: string;
+  id?: string;
+};
+
+export type InputSelectItem = {
+  value: string;
+  name: string;
+};
