@@ -3,6 +3,7 @@ import type { UploadData } from "@/types/stores";
 import Http from "@/module/http";
 import { useToastsStore } from "@/stores/toasts";
 import { ToastType } from "@/types/toasts";
+import { useFilesStore } from "@/stores/files";
 
 /**
  * State for App Store
@@ -47,6 +48,7 @@ export const useUploadStore = defineStore("upload", {
      */
     async uploadFiles(data: UploadData) {
       const toastStore = useToastsStore();
+      const fileStore = useFilesStore();
 
       /**
        * Packing the source data
@@ -62,7 +64,7 @@ export const useUploadStore = defineStore("upload", {
       this.cancels[data.file.name] = abort;
 
       try {
-        const request = await Http.inst.post("files", resp, {
+        await Http.inst.post("files", resp, {
           signal: abort.signal,
           onUploadProgress: (progress) => {
             this.progress[data.file.name] = progress.progress;
@@ -71,6 +73,7 @@ export const useUploadStore = defineStore("upload", {
 
         this.removeFile(data.file);
         toastStore.add(`File ${data.file.name} uploaded`);
+        await fileStore.updateFileList(data.folder);
       } catch (e: any) {
         toastStore.add(
           `File ${data.file.name} was not uploaded`,

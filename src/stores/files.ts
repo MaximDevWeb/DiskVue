@@ -3,6 +3,8 @@ import Http from "@/module/http";
 import { useToastsStore } from "@/stores/toasts";
 import { ToastType } from "@/types/toasts";
 import type { FileType } from "@/types/stores";
+import { useRoute } from "vue-router";
+import router from "@/router";
 
 export const useFilesStore = defineStore("files", {
   /**
@@ -45,6 +47,19 @@ export const useFilesStore = defineStore("files", {
         toastStore.add("File upload error", ToastType.danger);
       } finally {
         this.load = false;
+      }
+    },
+    /**
+     * Update file list
+     */
+    async updateFileList(folder: string) {
+      const route = router.currentRoute.value;
+      let currentFolder = route.params.sub
+        ? (route.params.sub as Array<string>)
+        : [];
+
+      if (currentFolder.join("/") === folder) {
+        await this.loadFilesList(folder);
       }
     },
   },
