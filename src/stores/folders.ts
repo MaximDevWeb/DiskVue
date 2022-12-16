@@ -48,7 +48,7 @@ export const useFoldersStore = defineStore("folders", {
     /**
      * The function of loading sub folders from the parents slug
      */
-    async get(): Promise<void> {
+    async get() {
       const toastStore = useToastsStore();
 
       try {

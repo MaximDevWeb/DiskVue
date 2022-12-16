@@ -27,3 +27,12 @@ export type UploadData = {
   file: File;
   folder: string;
 };
+
+export type FileType = {
+  id: number;
+  name: string;
+  size: number;
+  type: string;
+  link: string;
+  created_at: string;
+};
