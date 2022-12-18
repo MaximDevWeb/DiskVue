@@ -12,6 +12,8 @@ import ModalFolder from "@/components/ModalFolder.vue";
 import AppConfirm from "@/components/AppConfirm.vue";
 import NavbarMobileMenu from "@/components/NavbarMobileMenu.vue";
 import UploadLoader from "@/components/UploadLoader.vue";
+import ContentEditFile from "@/components/ContentEditFile.vue";
+import ModalFile from "@/components/ModalFile.vue";
 
 const authStore = useAuthStore();
 
@@ -125,8 +127,10 @@ onMounted(() => {
       </div>
     </div>
 
+    <content-edit-file />
     <upload-loader />
     <modal-folder />
+    <modal-file />
     <app-confirm />
     <toasts />
   </div>

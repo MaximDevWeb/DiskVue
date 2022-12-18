@@ -4,6 +4,10 @@ import { useFoldersStore } from "@/stores/folders";
 import { ref, watchEffect } from "vue";
 import InputText from "@/components/InputText.vue";
 
+/**
+ * This is the modal folder component.
+ */
+
 const folderStore = useFoldersStore();
 const title = ref("");
 

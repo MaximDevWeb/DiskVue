@@ -1,10 +1,18 @@
-import { describe, expect, test } from "vitest";
+import { describe, expect, test, vi } from "vitest";
 import { mount } from "@vue/test-utils";
 import ContentFilesListItem from "@/components/ContentFilesListItem.vue";
 import type { FileType } from "../../types/stores";
+import { createTestingPinia } from "@pinia/testing";
 
 describe("components.ComponentFilesListItem", () => {
   const wrapper = mount(ContentFilesListItem, {
+    global: {
+      plugins: [
+        createTestingPinia({
+          createSpy: vi.fn,
+        }),
+      ],
+    },
     props: {
       item: {
         id: 234,

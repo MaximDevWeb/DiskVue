@@ -4,13 +4,17 @@ import { numToSize } from "@/helpers/numbers";
 import getFileExt from "@/models/fileExt";
 import { DateTime } from "luxon";
 import { FileType } from "@/types/stores";
+import { useFilesStore } from "@/stores/files";
 
 /**
  * Content Files List Item component
  */
+
 const props = defineProps<{
   item: FileType;
 }>();
+
+const filesStore = useFilesStore();
 
 /**
  * Parse the file creation date
@@ -20,10 +24,17 @@ const props = defineProps<{
 const parseDate = (date: string): string => {
   return DateTime.fromISO(date).setLocale("ru").toLocaleString();
 };
+
+/**
+ * Set edit file
+ */
+const setEditFile = () => {
+  filesStore.editFile = props.item;
+};
 </script>
 
 <template>
-  <div class="file">
+  <div class="file" @click="setEditFile">
     <img
       class="file__icon"
       :src="'/images/files/' + getFileExt(item.type)"
