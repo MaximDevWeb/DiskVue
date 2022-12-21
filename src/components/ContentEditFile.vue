@@ -7,7 +7,6 @@ import { useAppStore } from "@/stores/app";
 /**
  * Content Edit File Component
  */
-
 const filesStore = useFilesStore();
 const appStore = useAppStore();
 
@@ -42,6 +41,15 @@ const deleteFile = () => {
     file.value?.id
   );
 };
+
+/**
+ * The function generate and open download link
+ */
+const getLinkAndOpen = () => {
+  filesStore.generateHashLink().then((hash) => {
+    window.open(`${file.value?.private_link}/${hash}`, "_blank");
+  });
+};
 </script>
 
 <template>
@@ -49,10 +57,11 @@ const deleteFile = () => {
     <div class="footer__name">{{ file?.name }}</div>
 
     <div class="footer__button">
-      <a :href="file?.link" class="btn btn_sm" target="_blank">
+      <a href="#" class="btn btn_sm" @click.prevent="getLinkAndOpen">
         <icon type="download" />
         Download
       </a>
+
       <a href="#" class="btn btn_sm">
         <icon type="upload" />
         Share

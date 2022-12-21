@@ -22,18 +22,13 @@ describe("components.ComponentName", () => {
     name: "Test.php",
     size: 1233422333,
     type: "php",
-    link: "/test/test/test.php",
+    private_link: "link/link/link.php",
     created_at: "2022-12-07T19:34:39",
   };
 
   test("test file name", () => {
     const name = wrapper.find(".footer__name");
     expect(name.text()).toBe("Test.php");
-  });
-
-  test("test link href", () => {
-    const link = wrapper.find(".footer__button a");
-    expect(link.attributes("href")).toBe("/test/test/test.php");
   });
 
   test("test close editor", async () => {

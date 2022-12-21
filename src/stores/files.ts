@@ -114,5 +114,18 @@ export const useFilesStore = defineStore("files", {
         await this.loadFilesList(currentFolder);
       }
     },
+    /**
+     * Generate protected hash
+     */
+    async generateHashLink(): Promise<string | undefined> {
+      const toastStore = useToastsStore();
+
+      try {
+        const response = await Http.inst.post("hash/generate");
+        return response.data.hash;
+      } catch (e) {
+        toastStore.add("Link generate error", ToastType.danger);
+      }
+    },
   },
 });
