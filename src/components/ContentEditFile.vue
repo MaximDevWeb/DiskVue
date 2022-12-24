@@ -50,6 +50,27 @@ const getLinkAndOpen = () => {
     window.open(`${file.value?.private_link}/${hash}`, "_blank");
   });
 };
+
+/**
+ * The function generate public link
+ */
+const generateLink = () => {
+  if (file.value) filesStore.generatePublicLink(file.value.id);
+};
+
+/**
+ * The function delete public link
+ */
+const deleteLink = () => {
+  if (file.value) filesStore.deletePublicLink(file.value.id);
+};
+
+/**
+ * The function copy public link
+ */
+const copyLink = () => {
+  filesStore.copyPublicLink(file.value?.public_link as string);
+};
 </script>
 
 <template>
@@ -62,7 +83,17 @@ const getLinkAndOpen = () => {
         Download
       </a>
 
-      <a href="#" class="btn btn_sm">
+      <a
+        href="#"
+        class="btn btn_sm"
+        v-if="file?.public_link"
+        @click.prevent="copyLink"
+      >
+        <icon type="link" />
+        Copy link
+      </a>
+
+      <a href="#" class="btn btn_sm" @click.prevent="generateLink" v-else>
         <icon type="upload" />
         Share
       </a>
@@ -79,7 +110,11 @@ const getLinkAndOpen = () => {
         Delete
       </a>
 
-      <a href="#">
+      <a
+        href="#"
+        :class="{ btn_inactive: !file?.public_link }"
+        @click.prevent="deleteLink"
+      >
         <icon type="unlink" />
         Delete link
       </a>

@@ -31,6 +31,13 @@ const parseDate = (date: string): string => {
 const setEditFile = () => {
   filesStore.editFile = props.item;
 };
+
+/**
+ * The function copy public link
+ */
+const copyLink = () => {
+  filesStore.copyPublicLink(props.item.public_link as string);
+};
 </script>
 
 <template>
@@ -43,8 +50,15 @@ const setEditFile = () => {
     <div class="file__name">{{ item.name }}</div>
     <div class="file__date">{{ parseDate(item.created_at) }}</div>
     <div class="file__size">{{ numToSize(item.size) }}</div>
-    <div class="file__link">
-      <icon type="link" />
+
+    <div class="file__share">
+      <div
+        class="file__link"
+        v-if="item.public_link"
+        @click.prevent.stop="copyLink"
+      >
+        <icon type="link" />
+      </div>
     </div>
   </div>
 </template>

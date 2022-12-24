@@ -34,5 +34,6 @@ export type FileType = {
   size: number;
   type: string;
   private_link: string;
+  public_link: string | null;
   created_at: string;
 };

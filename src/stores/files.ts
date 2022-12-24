@@ -39,7 +39,33 @@ export const useFilesStore = defineStore("files", {
     },
 
     /**
-     * Load file list
+     * The function update file data
+     */
+    updateFileData(file: FileType) {
+      this.editFile = file;
+
+      this.files.forEach((item: FileType) => {
+        if (item.id === file.id) {
+          item.public_link = file.public_link;
+        }
+      });
+    },
+
+    /**
+     * The function copy file public link
+     *
+     * @param link
+     */
+    copyPublicLink(link: string) {
+      const toastStore = useToastsStore();
+
+      navigator.clipboard.writeText(link).then(() => {
+        toastStore.add("Link copied");
+      });
+    },
+
+    /**
+     * The function load file list
      *
      * @param folder
      */
@@ -59,7 +85,7 @@ export const useFilesStore = defineStore("files", {
     },
 
     /**
-     * Delete File
+     * The function delete File
      *
      * @params id
      */
@@ -79,7 +105,7 @@ export const useFilesStore = defineStore("files", {
     },
 
     /**
-     * Update File
+     * The function update File
      *
      * @param id
      * @param name
@@ -99,7 +125,7 @@ export const useFilesStore = defineStore("files", {
     },
 
     /**
-     * Update file list
+     * The function update file list
      *
      * @param folder
      * @param current
@@ -114,8 +140,9 @@ export const useFilesStore = defineStore("files", {
         await this.loadFilesList(currentFolder);
       }
     },
+
     /**
-     * Generate protected hash
+     * The function generate protected hash
      */
     async generateHashLink(): Promise<string | undefined> {
       const toastStore = useToastsStore();
@@ -125,6 +152,46 @@ export const useFilesStore = defineStore("files", {
         return response.data.hash;
       } catch (e) {
         toastStore.add("Link generate error", ToastType.danger);
+      }
+    },
+
+    /**
+     * The function generate public link
+     *
+     * @param id
+     */
+    async generatePublicLink(id: number) {
+      const toastStore = useToastsStore();
+
+      try {
+        const response = await Http.inst.post("files/generate-public-link", {
+          id,
+        });
+
+        toastStore.add("Public link generated");
+        this.updateFileData(response.data.file);
+      } catch (e) {
+        toastStore.add("Error generating a public link", ToastType.danger);
+      }
+    },
+
+    /**
+     * The function delete public link
+     *
+     * @param id
+     */
+    async deletePublicLink(id: number) {
+      const toastStore = useToastsStore();
+
+      try {
+        const response = await Http.inst.post("files/delete-public-link", {
+          id,
+        });
+
+        toastStore.add("Public link deleted");
+        this.updateFileData(response.data.file);
+      } catch (e) {
+        toastStore.add("Error deleting a public link", ToastType.danger);
       }
     },
   },
