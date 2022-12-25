@@ -69,7 +69,10 @@ const deleteLink = () => {
  * The function copy public link
  */
 const copyLink = () => {
-  filesStore.copyPublicLink(file.value?.public_link as string);
+  if (file.value) {
+    const link = filesStore.generatePublicPageLink(file.value.public_hash);
+    filesStore.copyPublicLink(link as string);
+  }
 };
 </script>
 

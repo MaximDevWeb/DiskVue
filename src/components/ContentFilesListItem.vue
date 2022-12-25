@@ -36,7 +36,8 @@ const setEditFile = () => {
  * The function copy public link
  */
 const copyLink = () => {
-  filesStore.copyPublicLink(props.item.public_link as string);
+  const link = filesStore.generatePublicPageLink(props.item.public_hash);
+  filesStore.copyPublicLink(link as string);
 };
 </script>
 

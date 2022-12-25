@@ -52,6 +52,15 @@ export const useFilesStore = defineStore("files", {
     },
 
     /**
+     * The function generate public page link
+     *
+     * @param hash
+     */
+    generatePublicPageLink(hash: string | null) {
+      return hash ? `${window.location.origin}/link/${hash}` : null;
+    },
+
+    /**
      * The function copy file public link
      *
      * @param link
@@ -193,6 +202,17 @@ export const useFilesStore = defineStore("files", {
       } catch (e) {
         toastStore.add("Error deleting a public link", ToastType.danger);
       }
+    },
+
+    /**
+     * The function load public link file
+     *
+     * @param hash
+     */
+    loadPublicLinkFile(hash: string) {
+      return Http.inst.post("files/public-file", {
+        hash,
+      });
     },
   },
 });
