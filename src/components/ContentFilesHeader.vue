@@ -40,7 +40,7 @@ const setStyleHandler = (style: string) => {
   <div class="files__header">
     <input-select :items="fileFilters" v-model="filesStore.filter" />
 
-    <InputSwitch
+    <input-switch
       name="style"
       :items="styleSwitch"
       :value="filesStore.style"

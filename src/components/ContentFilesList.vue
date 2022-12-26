@@ -21,7 +21,10 @@ watchEffect(() => {
 </script>
 
 <template>
-  <div class="files__list">
+  <div
+    class="files__list"
+    :class="{ files__list_grid: filesStore.style === 'grid' }"
+  >
     <content-skeleton :items="6" type="files_list" v-if="filesStore.load" />
 
     <template v-else>
