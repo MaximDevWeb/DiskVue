@@ -4,7 +4,9 @@ import { useRoute } from "vue-router";
 import { computed, watchEffect } from "vue";
 import { useFilesStore } from "@/stores/files";
 import ContentSkeleton from "@/components/ContentSkeleton.vue";
+import ContentFilesNav from "@/components/ContentFilesNav.vue";
 import { isFileGroup } from "@/models/fileGroup";
+import _ from "lodash";
 
 /**
  * Content Files List component
@@ -31,28 +33,46 @@ const files = computed(() => {
     return filesStore.files;
   }
 });
+
+/**
+ * Files render to page
+ */
+const filesInPage = computed(() => {
+  const page = filesStore.currentPage;
+  const perPage = filesStore.filePerPage;
+
+  return _.chunk(files.value, perPage)[page - 1] || [];
+});
 </script>
 
 <template>
   <div
     class="files__list"
     :class="{ files__list_grid: filesStore.style === 'grid' }"
+    v-if="filesStore.load"
   >
     <content-skeleton :items="6" type="files_list" v-if="filesStore.load" />
+  </div>
 
-    <template v-else>
-      <template v-if="files.length">
+  <template v-else>
+    <template v-if="filesInPage.length">
+      <div
+        class="files__list"
+        :class="{ files__list_grid: filesStore.style === 'grid' }"
+      >
         <content-files-list-item
-          v-for="item in files"
+          v-for="item in filesInPage"
           :item="item"
           :key="item.id"
         />
-      </template>
-
-      <div class="alert" v-else>
-        <span>The folder</span> does not contain files! Click
-        <span>upload button</span> to add files
       </div>
+
+      <content-files-nav :files="files.length" />
     </template>
-  </div>
+
+    <div class="alert" v-else>
+      <span>The folder</span> does not contain files! Click
+      <span>upload button</span> to add files
+    </div>
+  </template>
 </template>

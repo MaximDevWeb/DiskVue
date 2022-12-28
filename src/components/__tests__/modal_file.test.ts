@@ -22,7 +22,9 @@ describe("components.ComponentName", () => {
     name: "Test.php",
     size: 1233422333,
     type: "php",
-    link: "/test/test/test.php",
+    public_link: "/test/test/test.php",
+    private_link: "/test/test/test.php",
+    public_hash: "sdge434rferfer",
     created_at: "2022-12-07T19:34:39",
   };
 

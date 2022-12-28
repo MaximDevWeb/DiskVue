@@ -25,6 +25,8 @@ export const useFilesStore = defineStore("files", {
     editFile: null as FileType | null,
     modalFileVisible: false,
     saving: false,
+    filePerPage: 50,
+    currentPage: 1,
   }),
 
   actions: {
@@ -71,6 +73,15 @@ export const useFilesStore = defineStore("files", {
       navigator.clipboard.writeText(link).then(() => {
         toastStore.add("Link copied");
       });
+    },
+
+    /**
+     * The function set current page
+     *
+     * @param page
+     */
+    setPage(page: number) {
+      this.currentPage = page;
     },
 
     /**
