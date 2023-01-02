@@ -25,7 +25,9 @@ describe("components.ContentFileList", () => {
       name: "Test.php",
       size: 1233422333,
       type: "php",
-      link: "/test/test/test.php",
+      private_link: "/test/test/test.php",
+      public_link: "/test/test/test.php",
+      public_hash: "dfg454gg54ggrtg",
       created_at: "2022-12-07T19:34:39",
     },
     {
@@ -33,7 +35,9 @@ describe("components.ContentFileList", () => {
       name: "Test.txt",
       size: 1233422,
       type: "txt",
-      link: "/test/test/test.txt",
+      private_link: "/test/test/test.txt",
+      public_link: "/test/test/test.txt",
+      public_hash: "dfg454gg54ggrtg",
       created_at: "2022-12-07T19:34:39",
     },
   ];

@@ -16,6 +16,7 @@ export const useFilesStore = defineStore("files", {
    * @state editFile - current edit file
    * @state modalFileVisible - modal folder edit/create visible
    * @state saving - saving status
+   * @state statistic - statistic data
    */
   state: () => ({
     style: localStorage.getItem("style") ?? "list",
@@ -27,6 +28,7 @@ export const useFilesStore = defineStore("files", {
     saving: false,
     filePerPage: 50,
     currentPage: 1,
+    statistic: null,
   }),
 
   actions: {
@@ -158,6 +160,7 @@ export const useFilesStore = defineStore("files", {
 
       if (currentFolder === folder || current) {
         await this.loadFilesList(currentFolder);
+        await this.loadStatistic();
       }
     },
 
@@ -224,6 +227,20 @@ export const useFilesStore = defineStore("files", {
       return Http.inst.post("files/public-file", {
         hash,
       });
+    },
+
+    /**
+     * The function load statistic files
+     */
+    async loadStatistic() {
+      const toastStore = useToastsStore();
+
+      try {
+        const response = await Http.inst.get("/statistic");
+        this.statistic = response.data.statistic;
+      } catch (e) {
+        toastStore.add("Error load statistic", ToastType.danger);
+      }
     },
   },
 });

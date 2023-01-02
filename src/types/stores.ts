@@ -38,3 +38,11 @@ export type FileType = {
   public_link: string | null;
   created_at: string;
 };
+
+export type Statistic = {
+  disk: number;
+  free: number;
+  useImages: number;
+  useDocuments: number;
+  useOther: number;
+};
