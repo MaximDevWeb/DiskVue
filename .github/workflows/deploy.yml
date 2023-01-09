@@ -6,7 +6,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  nuxt-deploy:
+  vue-deploy:
     runs-on: ubuntu-latest
 
     steps:
