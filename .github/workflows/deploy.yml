@@ -1,4 +1,4 @@
-name: Nuxt Deploy
+name: Vue Deploy
 on:
   pull_request:
     branches: [master]
@@ -19,7 +19,7 @@ jobs:
       - name: Test app
         run: npm run test:unit
 
-      - name: Test app
+      - name: Build app
         run: npm run build
 
       - name: Install SSH key
