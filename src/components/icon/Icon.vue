@@ -1,5 +1,6 @@
 <script setup lang="ts">
-import { computed, Ref } from "vue";
+import { computed } from "vue";
+import type { Ref } from "vue";
 import sprite from "@/components/icon/sprite.svg";
 
 /**
