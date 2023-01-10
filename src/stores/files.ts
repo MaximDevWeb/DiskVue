@@ -51,6 +51,7 @@ export const useFilesStore = defineStore("files", {
       this.files.forEach((item: FileType) => {
         if (item.id === file.id) {
           item.public_link = file.public_link;
+          item.public_hash = file.public_hash;
         }
       });
     },
