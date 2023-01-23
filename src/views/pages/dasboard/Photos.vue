@@ -3,7 +3,5 @@ import ContentBreadcrumbs from "@/components/ContentBreadcrumbs.vue";
 </script>
 
 <template>
-  <main class="main">
-    <content-breadcrumbs />
-  </main>
+  <content-breadcrumbs />
 </template>

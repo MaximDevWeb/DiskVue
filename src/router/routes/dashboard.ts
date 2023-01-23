@@ -31,6 +31,7 @@ const site: Array<RouteRecordRaw> = [
         component: Photos,
         meta: {
           title: "Photos",
+          dev: true,
         },
       },
       {
@@ -39,6 +40,7 @@ const site: Array<RouteRecordRaw> = [
         component: Albums,
         meta: {
           title: "Albums",
+          dev: true,
         },
       },
       {
@@ -47,6 +49,7 @@ const site: Array<RouteRecordRaw> = [
         component: Shared,
         meta: {
           title: "Shared access",
+          dev: true,
         },
       },
       {
@@ -55,6 +58,7 @@ const site: Array<RouteRecordRaw> = [
         component: Archives,
         meta: {
           title: "Archives",
+          dev: true,
         },
       },
       {
@@ -63,6 +67,7 @@ const site: Array<RouteRecordRaw> = [
         component: Trash,
         meta: {
           title: "Trash",
+          dev: true,
         },
       },
     ],

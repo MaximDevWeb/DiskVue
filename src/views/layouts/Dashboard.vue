@@ -15,8 +15,11 @@ import UploadLoader from "@/components/UploadLoader.vue";
 import ContentEditFile from "@/components/ContentEditFile.vue";
 import ModalFile from "@/components/ModalFile.vue";
 import AppStatistic from "@/components/AppStatistic.vue";
+import { useRoute } from "vue-router";
+import ContentDevelopment from "@/components/ContentDevelopment.vue";
 
 const authStore = useAuthStore();
+const route = useRoute();
 
 onMounted(() => {
   authStore.loadUser();
@@ -55,7 +58,15 @@ onMounted(() => {
       <navbar-mobile-menu />
 
       <div class="content__wrapper">
-        <router-view />
+        <main class="main">
+          <template v-if="route.meta.dev">
+            <content-development />
+          </template>
+
+          <template v-else>
+            <router-view />
+          </template>
+        </main>
 
         <app-statistic />
       </div>
