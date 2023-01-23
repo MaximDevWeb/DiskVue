@@ -5,11 +5,9 @@ import ContentFiles from "@/components/ContentFiles.vue";
 </script>
 
 <template>
-  <main class="main">
-    <content-breadcrumbs />
+  <content-breadcrumbs />
 
-    <content-folders />
+  <content-folders />
 
-    <content-files />
-  </main>
+  <content-files />
 </template>
